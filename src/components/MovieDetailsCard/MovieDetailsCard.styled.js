@@ -19,11 +19,12 @@ export const Text = styled.p`
   font-size: ${p => p.theme.fontSizes.m};
   color: ${p => p.theme.colors.text};
   text-align: justify;
-  margin-bottom: ${p => p.theme.space[4]}px;
+  margin-top: ${p => p.theme.space[4]}px;
 `;
 
 export const TextTitle = styled.h3`
+  padding-left: ${p => p.theme.space[2]}px;
   font-size: ${p => p.theme.fontSizes.l};
   font-weight: 500;
-  margin-bottom: ${p => p.theme.space[2]}px;
+  margin-top: ${p => p.theme.space[4]}px;
 `;

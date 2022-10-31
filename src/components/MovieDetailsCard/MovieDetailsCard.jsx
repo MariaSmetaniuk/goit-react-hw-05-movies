@@ -18,7 +18,7 @@ export const MovieDetailsCard = ({ movieDetails }) => {
         alt="film poster"
       />
       <Box p={5}>
-        <Box display="flex" gridGap={3} mb={4}>
+        <Box display="flex" gridGap={3}>
           <MovieTitle>{title ? title : 'Movie Title'}</MovieTitle>
           <Year>({release_date?.slice(0, 4)})</Year>
         </Box>
