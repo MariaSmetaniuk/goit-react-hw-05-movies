@@ -13,3 +13,8 @@ export const getTrendingMovies = async () => {
   const { data } = await instance.get('trending/movie/day');
   return data;
 };
+
+export const getMovieDetails = async movieId => {
+  const { data } = await instance.get(`movie/${movieId}`);
+  return data;
+};
