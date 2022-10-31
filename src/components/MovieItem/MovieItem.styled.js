@@ -26,11 +26,14 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.p`
-  margin-bottom: ${p => p.theme.space[3]}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: ${p => p.theme.space[4]}px 0;
+  padding: 0 ${p => p.theme.space[3]}px;
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
   line-height: 1.33;
   text-transform: uppercase;
-  text-align: center;
   color: ${p => p.theme.colors.text};
 `;
