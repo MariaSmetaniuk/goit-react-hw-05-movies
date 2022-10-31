@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const API_KEY = '84c663b0d9ed75aa92613d5f25b42077';
 
@@ -27,4 +28,29 @@ export const getCredits = async movieId => {
 export const getReviews = async movieId => {
   const { data } = await instance.get(`movie/${movieId}/reviews`);
   return data.results;
+};
+
+export const getSearchMovies = async query => {
+  const { data } = await instance.get(`/search/movie`, {
+    params: {
+      query,
+    },
+  });
+  return data;
+};
+
+getMovieDetails.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
+
+getCredits.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
+
+getReviews.propTypes = {
+  movieId: PropTypes.string.isRequired,
+};
+
+getSearchMovies.propTypes = {
+  query: PropTypes.string.isRequired,
 };
