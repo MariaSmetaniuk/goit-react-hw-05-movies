@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   padding: ${p => p.theme.space[4]}px ${p => p.theme.space[5]}px;
-  margin-bottom: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.colors.background};
   border-bottom: ${p => p.theme.borders.normal};
   border-color: ${p => p.theme.colors.line};

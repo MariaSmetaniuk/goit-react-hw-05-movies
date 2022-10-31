@@ -13,7 +13,7 @@ export const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </Box>
       </Header>
-      <Box width="1200px" mx="auto" px={4} pb={5}>
+      <Box width="1200px" mx="auto" px={4} py={5}>
         <Outlet />
       </Box>
     </>
