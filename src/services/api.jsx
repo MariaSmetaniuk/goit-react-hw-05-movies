@@ -18,3 +18,8 @@ export const getMovieDetails = async movieId => {
   const { data } = await instance.get(`movie/${movieId}`);
   return data;
 };
+
+export const getCredits = async movieId => {
+  const { data } = await instance.get(`movie/${movieId}/credits`);
+  return data.cast;
+};
