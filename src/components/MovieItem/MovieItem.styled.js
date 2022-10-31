@@ -7,7 +7,6 @@ export const ItemLink = styled(Link)`
 
 export const Item = styled.li`
   width: calc((100% - 3 * 32px) / 4);
-  border-radius: ${p => p.theme.radii.sm};
   background-color: ${p => p.theme.colors.white};
   box-shadow: ${p => p.theme.shadows.secondary};
   transition: transform 200ms linear;
@@ -20,8 +19,6 @@ export const Item = styled.li`
 export const Image = styled.img`
   height: 100%;
   width: 100%;
-  border-top-left-radius: ${p => p.theme.radii.sm};
-  border-top-right-radius: ${p => p.theme.radii.sm};
   object-fit: cover;
 `;
 

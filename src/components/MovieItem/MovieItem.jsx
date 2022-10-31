@@ -7,7 +7,7 @@ export const MovieItem = ({ movie }) => {
   const { id, title, poster_path } = movie;
   return (
     <Item>
-      <ItemLink to={`/movies/:${id}`}>
+      <ItemLink to={`/movies/${id}`}>
         <Box height="350px">
           <Image
             src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
