@@ -23,3 +23,8 @@ export const getCredits = async movieId => {
   const { data } = await instance.get(`movie/${movieId}/credits`);
   return data.cast;
 };
+
+export const getReviews = async movieId => {
+  const { data } = await instance.get(`movie/${movieId}/reviews`);
+  return data.results;
+};

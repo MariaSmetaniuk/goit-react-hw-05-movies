@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { CastList } from 'components/CastList/CastList';
 
 export const Cast = () => {
-  const [movieCast, setMovieCast] = useState(null);
+  const [movieCast, setMovieCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -34,7 +34,7 @@ export const Cast = () => {
           later!
         </p>
       )}
-      {movieCast && <CastList cast={movieCast} />}
+      {movieCast.length > 0 && <CastList cast={movieCast} />}
     </>
   );
 };
