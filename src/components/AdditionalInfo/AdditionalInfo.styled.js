@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Title = styled.h2`
   font-size: ${p => p.theme.fontSizes.l};
@@ -7,7 +7,7 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -18,8 +18,11 @@ export const StyledLink = styled(Link)`
 
   font-weight: 500;
   font-size: ${p => p.theme.fontSizes.m};
-  /* text-transform: uppercase; */
   letter-spacing: 0.05rem;
   box-shadow: ${p => p.theme.shadows.secondary};
-  /* border: 1px solid ${p => p.theme.colors.line}; */
+
+  &.active {
+    color: ${p => p.theme.colors.muted};
+    background-color: ${p => p.theme.colors.accent};
+  }
 `;
