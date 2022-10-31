@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
+import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
 
 export const MovieDetailsPage = () => {
-  const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,7 +38,13 @@ export const MovieDetailsPage = () => {
           later!
         </p>
       )}
-      {movieDetails.id && <MovieDetailsCard movieDetails={movieDetails} />}
+      {movieDetails && (
+        <>
+          <MovieDetailsCard movieDetails={movieDetails} />
+          <AdditionalInfo />
+          <Outlet />
+        </>
+      )}
     </main>
   );
 };
