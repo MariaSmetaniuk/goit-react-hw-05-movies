@@ -14,7 +14,14 @@ export const MovieItem = ({ movie }) => {
             alt="film poster"
           />
         </Box>
-        <Title>{title}</Title>
+        <Box
+          display="flex"
+          alingItems="center"
+          justifyContent="center"
+          height="75px"
+        >
+          <Title>{title}</Title>
+        </Box>
       </ItemLink>
     </Item>
   );
