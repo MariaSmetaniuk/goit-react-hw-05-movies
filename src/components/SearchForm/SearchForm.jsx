@@ -1,28 +1,27 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
 import { Form, Input, SearchButton, ButtonLabel } from './SearchForm.styled';
 
 export const SearchForm = ({ onSubmit }) => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryValue = searchParams.get('query') ?? '';
 
-  const handleChange = e => {
-    const { value } = e.currentTarget;
-    setQuery(value);
-  };
-
+  // при сабміті відправляю пошукове слово, якщо воно не порожній рядок
   const handleSubmit = e => {
     e.preventDefault();
-    const searchQuery = query.trim();
+    const searchQuery = queryValue.trim();
 
     if (searchQuery !== '') {
       onSubmit(searchQuery);
     }
-    reset();
   };
 
-  const reset = () => {
-    setQuery('');
+  // при введенні даних в інпут змінюю пошуковий рядок
+  const handleChange = e => {
+    const { value } = e.currentTarget;
+    const nextParams = value !== '' ? { query: value } : {};
+    setSearchParams(nextParams);
   };
 
   return (
@@ -32,7 +31,7 @@ export const SearchForm = ({ onSubmit }) => {
         autocomplete="off"
         autoFocus
         placeholder="Search movies"
-        value={query}
+        value={queryValue}
         onChange={handleChange}
       />
       <SearchButton type="submit">
