@@ -20,7 +20,7 @@ export const MovieDetailsPage = () => {
         const data = await getMovieDetails(movieId);
         setMovieDetails(data);
       } catch (error) {
-        setError(error);
+        setError('Something went wrong. Please, try again later!');
       } finally {
         setLoading(false);
       }
@@ -32,12 +32,7 @@ export const MovieDetailsPage = () => {
   return (
     <main>
       {loading && <Loader />}
-      {error && (
-        <p>
-          Something went wrong. We can't find trending movies. Please, try again
-          later!
-        </p>
-      )}
+      {error && <p>{error}</p>}
       {movieDetails && (
         <>
           <MovieDetailsCard movieDetails={movieDetails} />

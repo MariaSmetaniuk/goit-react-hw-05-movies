@@ -18,7 +18,7 @@ export const Cast = () => {
         const cast = await getCredits(movieId);
         setMovieCast(cast);
       } catch (error) {
-        setError(error);
+        setError('Something went wrong. Please, try again later!');
       } finally {
         setLoading(false);
       }
@@ -28,12 +28,7 @@ export const Cast = () => {
   return (
     <>
       {loading && <Loader />}
-      {error && (
-        <p>
-          Something went wrong. We can't find trending movies. Please, try again
-          later!
-        </p>
-      )}
+      {error && <p>{error}</p>}
       {movieCast.length > 0 && <CastList cast={movieCast} />}
     </>
   );

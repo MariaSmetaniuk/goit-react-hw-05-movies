@@ -19,13 +19,15 @@ export const MoviesPage = () => {
 
         const data = await getSearchMovies(quary);
         if (data.results.length === 0) {
-          setError('Not found');
+          setError(
+            `Sorry, there are no movies matching ${quary}. Please try again!`
+          );
           return;
         }
 
         setSearchMovies(data.results);
       } catch (error) {
-        setError(error);
+        setError('Something went wrong. Please, try again later!');
       } finally {
         setLoading(false);
       }
@@ -44,12 +46,7 @@ export const MoviesPage = () => {
       {loading && <Loader />}
       <SearchForm onSubmit={handleSearch} />
       <Box mt={5}>
-        {error && (
-          <p>
-            Something went wrong. We can't find trending movies. Please, try
-            again later!
-          </p>
-        )}
+        {error && <p>{error}</p>}
         {searchMovies.length > 0 && <MoviesList movies={searchMovies} />}
       </Box>
     </main>

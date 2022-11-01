@@ -17,10 +17,13 @@ export const Reviews = () => {
       try {
         setLoading(true);
         const reviews = await getReviews(movieId);
-        console.log(reviews);
+        if (reviews.length === 0) {
+          setError("We don't have any reviews for this movie.");
+          return;
+        }
         setMovieReviews(reviews);
       } catch (error) {
-        setError(error);
+        setError('Something went wrong. Please, try again later!');
       } finally {
         setLoading(false);
       }
@@ -30,17 +33,8 @@ export const Reviews = () => {
   return (
     <>
       {loading && <Loader />}
-      {error && (
-        <p>
-          Something went wrong. We can't find trending movies. Please, try again
-          later!
-        </p>
-      )}
-      {movieReviews.length > 0 ? (
-        <ReviewsList reviews={movieReviews} />
-      ) : (
-        <NotFoundText>We don't have any reviews for this movie.</NotFoundText>
-      )}
+      {error && <NotFoundText>{error}</NotFoundText>}
+      {movieReviews.length > 0 && <ReviewsList reviews={movieReviews} />}
     </>
   );
 };

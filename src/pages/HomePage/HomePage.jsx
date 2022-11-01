@@ -17,7 +17,9 @@ export const HomePage = () => {
         const data = await getTrendingMovies();
         setTrendingMovies(data.results);
       } catch (error) {
-        setError(error);
+        setError(
+          "Something went wrong. We can't find trending movies. Please, try again later!"
+        );
       } finally {
         setLoading(false);
       }
@@ -29,12 +31,7 @@ export const HomePage = () => {
   return (
     <main>
       {loading && <Loader />}
-      {error && (
-        <p>
-          Something went wrong. We can't find trending movies. Please, try again
-          later!
-        </p>
-      )}
+      {error && <p>{error}</p>}
       {trendingMovies.length > 0 && (
         <>
           <Title>Trending today</Title>
