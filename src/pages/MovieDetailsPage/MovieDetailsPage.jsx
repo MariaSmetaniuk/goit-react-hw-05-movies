@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
 import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
+import { GoBackButton } from 'components/GoBackButton/GoBackButton';
 
 export const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -11,6 +12,22 @@ export const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
 
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate(backLinkHref);
+  };
+  // useEffect(() => {
+  //   const backLink = location.state?.from ?? '/';
+  //   setBackLinkHref(backLink);
+  //   console.log(backLinkHref);
+  //   console.log('backLinkHref', typeof backLinkHref);
+  // }, [backLinkHref, location.state?.from]);
+
+  // const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -35,8 +52,9 @@ export const MovieDetailsPage = () => {
       {error && <p>{error}</p>}
       {movieDetails && (
         <>
+          <GoBackButton onClick={handleGoBack} />
           <MovieDetailsCard movieDetails={movieDetails} />
-          <AdditionalInfo />
+          <AdditionalInfo from={backLinkHref} />
           <Outlet />
         </>
       )}

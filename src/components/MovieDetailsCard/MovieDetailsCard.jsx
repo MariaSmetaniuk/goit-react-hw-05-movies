@@ -12,7 +12,7 @@ export const MovieDetailsCard = ({ movieDetails }) => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movieDetails;
   return (
-    <Box display="flex" bg="muted" boxShadow="secondary">
+    <Box display="flex" mt={4} bg="muted" boxShadow="secondary">
       <PosterImg
         src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
         alt="film poster"

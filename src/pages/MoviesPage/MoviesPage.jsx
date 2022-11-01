@@ -12,9 +12,9 @@ export const MoviesPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (quary === '') return;
     const fetchSearchMovies = async () => {
       try {
-        if (quary === '') return;
         setLoading(true);
 
         const data = await getSearchMovies(quary);
