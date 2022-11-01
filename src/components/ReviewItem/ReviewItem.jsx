@@ -7,11 +7,11 @@ export const ReviewItem = ({ review }) => {
   return (
     <Box
       p={4}
-      mt={4}
       bg="muted"
       borderRadius="sm"
       boxShadow="secondary"
       width="100%"
+      as="li"
     >
       <Author>Author: {author}</Author>
       <Text>{content}</Text>
