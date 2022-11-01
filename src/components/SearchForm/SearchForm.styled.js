@@ -12,6 +12,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   display: inline-block;
   width: 100%;
+  height: 48px;
   font-size: ${p => p.theme.fontSizes.m};
   color: ${p => p.theme.colors.text};
   background-color: ${p => p.theme.colors.muted};
