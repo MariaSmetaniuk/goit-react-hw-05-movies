@@ -20,15 +20,8 @@ export const MovieDetailsPage = () => {
   const handleGoBack = () => {
     navigate(backLinkHref);
   };
-  // useEffect(() => {
-  //   const backLink = location.state?.from ?? '/';
-  //   setBackLinkHref(backLink);
-  //   console.log(backLinkHref);
-  //   console.log('backLinkHref', typeof backLinkHref);
-  // }, [backLinkHref, location.state?.from]);
 
-  // const backLinkHref = location.state?.from ?? '/';
-
+  // завантажую з беку MovieDetails по id
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -54,7 +47,7 @@ export const MovieDetailsPage = () => {
         <>
           <GoBackButton onClick={handleGoBack} />
           <MovieDetailsCard movieDetails={movieDetails} />
-          <AdditionalInfo from={backLinkHref} />
+          <AdditionalInfo />
           <Outlet />
         </>
       )}

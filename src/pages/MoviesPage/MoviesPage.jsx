@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { SearchForm } from 'components/SearchForm/SearchForm';
@@ -10,6 +11,19 @@ export const MoviesPage = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [searchParams] = useSearchParams();
+
+  const firstRender = useRef(false);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = true;
+      return;
+    }
+    const query = searchParams.get('query') ?? '';
+    setSearchQuery(query);
+  }, [searchParams]);
 
   // загрузка фільмів при зміні searchQuery
   useEffect(() => {
@@ -23,6 +37,7 @@ export const MoviesPage = () => {
           setError(
             `Sorry, there are no movies matching ${searchQuery}. Please try again!`
           );
+          setSearchMovies([]);
           return;
         }
 

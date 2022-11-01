@@ -14,6 +14,3 @@ export const GoBackButton = ({ onClick }) => {
 GoBackButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-// GoBackButton.propTypes = {
-//   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-// };

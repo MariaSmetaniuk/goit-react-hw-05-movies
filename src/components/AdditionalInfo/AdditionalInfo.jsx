@@ -1,7 +1,12 @@
+import { useLocation } from 'react-router-dom';
 import { Box } from 'components/Box';
 import { Title, StyledLink } from './AdditionalInfo.styled';
 
-export const AdditionalInfo = ({ from }) => {
+export const AdditionalInfo = () => {
+  // визначаємо адресу попередньї сторінки, щоб не змінювати її при завантаженні Cast і Reviews
+  const location = useLocation();
+  const from = location.state?.from ?? '/';
+
   return (
     <Box mt={5}>
       <Title>Additional information</Title>
