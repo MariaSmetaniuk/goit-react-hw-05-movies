@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
@@ -7,35 +7,24 @@ import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Box } from 'components/Box';
 
 const MoviesPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
 
-  const firstRender = useRef(false);
-
+  // загрузка фільмів при зміні query
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = true;
-      return;
-    }
-    const query = searchParams.get('query') ?? '';
-    setSearchQuery(query);
-  }, [searchParams]);
-
-  // загрузка фільмів при зміні searchQuery
-  useEffect(() => {
-    if (searchQuery === '') return;
+    if (query === '') return;
     const fetchSearchMovies = async () => {
       try {
         setLoading(true);
 
-        const data = await getSearchMovies(searchQuery);
+        const data = await getSearchMovies(query);
         if (data.results.length === 0) {
           setError(
-            `Sorry, there are no movies matching ${searchQuery}. Please try again!`
+            `Sorry, there are no movies matching ${query}. Please try again!`
           );
           setSearchMovies([]);
           return;
@@ -50,11 +39,11 @@ const MoviesPage = () => {
     };
 
     fetchSearchMovies();
-  }, [searchQuery]);
+  }, [query]);
 
-  // при сабміті форми записую searchQuery в state
+  // при сабміті форми записую searchQuery в параметри пошукового рядка
   const handleSubmit = searchQuery => {
-    setSearchQuery(searchQuery);
+    setSearchParams({ query: searchQuery });
     setError(null);
   };
 
