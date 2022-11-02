@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader/Loader';
 import { NotFoundText } from './Reviews.styled';
 import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [movieReviews, setMovieReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -38,3 +38,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

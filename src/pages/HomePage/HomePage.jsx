@@ -4,7 +4,7 @@ import { Loader } from 'components/Loader/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Title } from './HomePage.styled';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -41,3 +41,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+export default HomePage;

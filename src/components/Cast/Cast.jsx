@@ -4,7 +4,7 @@ import { getCredits } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { CastList } from 'components/CastList/CastList';
 
-export const Cast = () => {
+const Cast = () => {
   const [movieCast, setMovieCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -33,3 +33,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

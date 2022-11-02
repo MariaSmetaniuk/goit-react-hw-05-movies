@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
 import { Loader } from 'components/Loader/Loader';
@@ -6,7 +6,7 @@ import { MovieDetailsCard } from 'components/MovieDetailsCard/MovieDetailsCard';
 import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
 import { GoBackButton } from 'components/GoBackButton/GoBackButton';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -48,9 +48,13 @@ export const MovieDetailsPage = () => {
           <GoBackButton onClick={handleGoBack} />
           <MovieDetailsCard movieDetails={movieDetails} />
           <AdditionalInfo />
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </main>
   );
 };
+
+export default MovieDetailsPage;

@@ -6,7 +6,7 @@ import { SearchForm } from 'components/SearchForm/SearchForm';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Box } from 'components/Box';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -69,3 +69,5 @@ export const MoviesPage = () => {
     </main>
   );
 };
+
+export default MoviesPage;
